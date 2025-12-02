@@ -9,29 +9,51 @@
 
 /* Colour palette and base variables */
 :root {
-  /* Global colour palette tuned to match the light, minimal aesthetic of the original Google Site. */
-  /* Base backgrounds are soft off‑white to allow colourful accents to pop. */
-  --bg: #f9f5f1;
-  --bg-alt: #f5ede7;
-  /* Cards are slightly lighter than the page background to stand apart without a harsh contrast. */
+  /*
+   * Global colour palette tuned to match the official Geotechnic Solutions
+   * branding. Colours were sampled from the provided logo asset and
+   * converted into a set of CSS custom properties that can be reused
+   * throughout the site. Adjusting the values here will propagate
+   * throughout all pages without having to change individual rules.
+   */
+  /* Page backgrounds use a very light, slightly warm off‑white derived from
+     the logo’s background. This keeps the overall aesthetic bright and
+     professional. */
+  --bg: #f4f6ef;
+  /* Alternate backgrounds are pure white to give cards and hero areas a
+     subtle distinction from the page background. */
+  --bg-alt: #ffffff;
+  /* Cards and panels share the same white background as --bg-alt so they
+     feel integrated rather than boxy. */
   --card: #ffffff;
-  /* Primary accent is a fresh green; secondary accent is a complementary pink used in gradients. */
-  --accent: #22c55e;
-  --accent-alt: #ec4899;
-  /* Accent strong is used for subtle highlights; set to the secondary (pink) colour. */
-  --accent-strong: var(--accent-alt);
-  /* A soft transparent green for subtle highlights. */
-  --accent-soft: rgba(34, 197, 94, 0.15);
-  /* Text colours favour dark greys for readability on light backgrounds. */
-  --text: #1f2937;
-  --muted: #6b7280;
-  /* Borders are light grey to delineate sections without heavy lines. */
+  /* Primary accent is the vibrant green taken from the logo (approx.
+     #009515). It should be used for buttons, links and highlights. */
+  --accent: #009515;
+  /* Secondary accent is the warm red/orange hue from the logo
+     (approx. #de1c0f). Use sparingly for callouts or secondary buttons. */
+  --accent-alt: #de1c0f;
+  /* Accent strong can reuse the primary accent; this variable exists for
+     scenarios where a stronger colour is needed for subtle effects such as
+     dotted outlines. */
+  --accent-strong: var(--accent);
+  /* Soft accent colour is a transparent version of the primary green for
+     light backgrounds and hover effects. */
+  --accent-soft: rgba(0, 149, 21, 0.15);
+  /* Main text uses a deep grey for high contrast on light backgrounds. */
+  --text: #111827;
+  /* Muted text employs a medium grey for secondary information. */
+  --muted: #4b5563;
+  /* Border colour is a light grey, subtle enough to delineate sections
+     without dominating the layout. */
   --border: #d1d5db;
   /* Large radius for cards gives a friendly, rounded feel. */
   --radius-lg: 1.25rem;
-  /* Softer shadow for cards to lift them subtly off the page. */
-  --shadow-soft: 0 12px 24px rgba(0, 0, 0, 0.07);
+  /* Softer shadow for cards lifts them gently off the page without
+     overwhelming the design. */
+  --shadow-soft: 0 12px 24px rgba(15, 23, 42, 0.07);
+  /* Transition timing for interactive elements. */
   --transition-fast: 180ms ease-out;
+  /* Maximum width for centred content containers. */
   --max-width: 1120px;
 }
 
@@ -69,8 +91,8 @@ header {
   top: 0;
   z-index: 20;
   backdrop-filter: blur(12px);
-  /* Lighten the navigation bar to complement the pale page background. */
-  background: linear-gradient(to bottom, rgba(249, 245, 241, 0.96), rgba(245, 237, 231, 0.86));
+  /* Lighten the navigation bar to complement the off‑white page background. */
+  background: linear-gradient(to bottom, rgba(244, 246, 239, 0.96), rgba(244, 246, 239, 0.86));
   border-bottom: 1px solid rgba(209, 213, 219, 0.4);
 }
 
@@ -158,25 +180,32 @@ header {
   white-space: nowrap;
 }
 
+/* Primary button uses the brand green as a gradient. It fades to a slightly lighter
+   green on the far corner. The box shadow is also tinted green to match. */
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent), #22c55e);
-  border-color: rgba(15, 23, 42, 0.7);
-  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.45);
+  background: linear-gradient(135deg, var(--accent), #00a51c);
+  border-color: rgba(0, 149, 21, 0.6);
+  box-shadow: 0 15px 30px rgba(0, 149, 21, 0.35);
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 22px 45px rgba(37, 99, 235, 0.6);
+  box-shadow: 0 22px 45px rgba(0, 149, 21, 0.5);
 }
 
+/* Ghost button uses the secondary accent for its border and a transparent
+   background to let the page colour show through. On hover, a faint
+   secondary hue appears. */
 .btn-ghost {
-  border-color: rgba(148, 163, 184, 0.4);
-  background: rgba(15, 23, 42, 0.7);
+  border-color: var(--accent-alt);
+  background: transparent;
+  color: var(--accent-alt);
 }
 
 .btn-ghost:hover {
-  background: rgba(15, 23, 42, 0.95);
-  border-color: rgba(148, 163, 184, 0.8);
+  background: rgba(222, 28, 15, 0.06);
+  border-color: var(--accent-alt);
+  color: var(--accent-alt);
 }
 
 .btn-icon {
@@ -188,8 +217,9 @@ header {
   border-radius: 999px;
   border: 1px solid rgba(148, 163, 184, 0.6);
   padding: 0.25rem 0.6rem;
-  background: rgba(15, 23, 42, 0.85);
-  color: #e5e7eb;
+  /* Mobile menu toggle uses the primary brand colour for consistency */
+  background: var(--accent);
+  color: #ffffff;
   font-size: 0.85rem;
   cursor: pointer;
 }
@@ -212,11 +242,12 @@ header {
   gap: 0.45rem;
   font-size: 0.83rem;
   color: var(--accent-strong);
-  background: rgba(34, 197, 94, 0.12);
+  /* Transparent version of the primary accent for the pill background */
+  background: rgba(0, 149, 21, 0.12);
   border-radius: 999px;
   padding: 0.22rem 0.7rem 0.22rem 0.28rem;
   /* Use the primary accent colour for the outline around the kicker pill. */
-  border: 1px solid rgba(34, 197, 94, 0.35);
+  border: 1px solid rgba(0, 149, 21, 0.35);
   margin-bottom: 0.9rem;
 }
 
@@ -225,7 +256,7 @@ header {
   height: 7px;
   border-radius: 999px;
   background: var(--accent-strong);
-  box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.25);
+  box-shadow: 0 0 0 5px rgba(0, 149, 21, 0.25);
 }
 
 .hero-title {
@@ -287,10 +318,12 @@ header {
 }
 
 .hero-card {
-  background: radial-gradient(circle at top, #1f2937 0, #020617 60%, #000 100%);
+  /* Use the card background for the hero callout instead of a dark gradient.
+     This ensures the element blends with the overall light theme. */
+  background: var(--card);
   border-radius: 1.6rem;
   padding: 1.5rem 1.4rem;
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  border: 1px solid var(--border);
   box-shadow: var(--shadow-soft);
   position: relative;
   overflow: hidden;
@@ -335,9 +368,10 @@ header {
   font-size: 0.75rem;
   padding: 0.15rem 0.6rem;
   border-radius: 999px;
-  background: rgba(15, 23, 42, 0.85);
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  color: var(--muted);
+  /* Light badge styling: soft green tint with a subtle border. */
+  background: rgba(0, 149, 21, 0.05);
+  border: 1px solid rgba(0, 149, 21, 0.15);
+  color: var(--text);
 }
 
 .hero-card-footer {
@@ -356,7 +390,8 @@ header {
   width: 140px;
   height: 140px;
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.15), transparent 70%);
+  /* Create a subtle glow using the primary accent colour to fit the brand. */
+  background: radial-gradient(circle, rgba(0, 149, 21, 0.12), transparent 70%);
   filter: blur(3px);
   pointer-events: none;
 }
@@ -369,7 +404,7 @@ header {
 .spark-2 {
   bottom: -40px;
   left: -30px;
-  background: radial-gradient(circle, rgba(22, 163, 74, 0.16), transparent 70%);
+  background: radial-gradient(circle, rgba(0, 149, 21, 0.16), transparent 70%);
 }
 
 /* Sections */
@@ -465,9 +500,9 @@ section {
   font-size: 0.76rem;
   padding: 0.2rem 0.65rem;
   border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.5);
-  color: var(--muted);
-  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(0, 149, 21, 0.25);
+  color: var(--text);
+  background: rgba(0, 149, 21, 0.05);
 }
 
 .steps {
@@ -496,7 +531,8 @@ section {
   justify-content: center;
   font-size: 0.75rem;
   color: var(--accent);
-  background: rgba(15, 23, 42, 0.9);
+  /* Use solid primary accent for the numbered circle in the process list */
+  background: var(--accent);
 }
 
 .step strong {
@@ -522,17 +558,18 @@ section {
   font-size: 0.78rem;
   padding: 0.15rem 0.6rem;
   border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.5);
-  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(0, 149, 21, 0.25);
+  background: rgba(0, 149, 21, 0.08);
   margin-bottom: 0.45rem;
 }
 
 .about-highlight {
   font-size: 0.88rem;
-  background: rgba(15, 23, 42, 0.95);
+  background: var(--bg-alt);
   border-radius: 0.9rem;
   padding: 0.85rem 0.9rem;
-  border: 1px dashed rgba(148, 163, 184, 0.6);
+  /* Use a dashed border in the primary accent colour for emphasis */
+  border: 1px dashed rgba(0, 149, 21, 0.4);
   margin-top: 0.5rem;
   color: var(--muted);
 }
@@ -584,8 +621,8 @@ textarea,
 select {
   width: 100%;
   border-radius: 0.75rem;
-  border: 1px solid rgba(148, 163, 184, 0.5);
-  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: var(--bg-alt);
   color: var(--text);
   font-size: 0.85rem;
   padding: 0.45rem 0.6rem;
@@ -598,7 +635,7 @@ input:focus,
 textarea:focus,
 select:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 0 0 1px rgba(0, 149, 21, 0.4);
 }
 
 textarea {
@@ -606,11 +643,13 @@ textarea {
 }
 
 footer {
-  border-top: 1px solid rgba(30, 41, 59, 0.9);
+  border-top: 1px solid var(--border);
   padding: 1.3rem 1.25rem 2rem;
   font-size: 0.8rem;
   color: var(--muted);
-  background: #020617;
+  /* Use the alternate background colour for the footer to distinguish
+     it subtly from the main body without using a dark colour. */
+  background: var(--bg-alt);
   margin-top: 3rem;
 }
 
