@@ -9,17 +9,28 @@
 
 /* Colour palette and base variables */
 :root {
-  --bg: #050816;
-  --bg-alt: #070b1f;
-  --card: #0c1024;
-  --accent: #3b82f6;
-  --accent-soft: rgba(59, 130, 246, 0.15);
-  --accent-strong: #22c55e;
-  --text: #e5e7eb;
-  --muted: #9ca3af;
-  --border: #1f2937;
+  /* Global colour palette tuned to match the light, minimal aesthetic of the original Google Site. */
+  /* Base backgrounds are soft off‑white to allow colourful accents to pop. */
+  --bg: #f9f5f1;
+  --bg-alt: #f5ede7;
+  /* Cards are slightly lighter than the page background to stand apart without a harsh contrast. */
+  --card: #ffffff;
+  /* Primary accent is a fresh green; secondary accent is a complementary pink used in gradients. */
+  --accent: #22c55e;
+  --accent-alt: #ec4899;
+  /* Accent strong is used for subtle highlights; set to the secondary (pink) colour. */
+  --accent-strong: var(--accent-alt);
+  /* A soft transparent green for subtle highlights. */
+  --accent-soft: rgba(34, 197, 94, 0.15);
+  /* Text colours favour dark greys for readability on light backgrounds. */
+  --text: #1f2937;
+  --muted: #6b7280;
+  /* Borders are light grey to delineate sections without heavy lines. */
+  --border: #d1d5db;
+  /* Large radius for cards gives a friendly, rounded feel. */
   --radius-lg: 1.25rem;
-  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.5);
+  /* Softer shadow for cards to lift them subtly off the page. */
+  --shadow-soft: 0 12px 24px rgba(0, 0, 0, 0.07);
   --transition-fast: 180ms ease-out;
   --max-width: 1120px;
 }
@@ -31,7 +42,8 @@
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top, #0b1120 0, #020617 50%, #000 100%);
+  /* Use a flat off‑white background rather than a dark radial gradient. */
+  background: var(--bg);
   color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -56,9 +68,10 @@ header {
   position: sticky;
   top: 0;
   z-index: 20;
-  backdrop-filter: blur(18px);
-  background: linear-gradient(to bottom, rgba(2, 6, 23, 0.96), rgba(2, 6, 23, 0.86));
-  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  backdrop-filter: blur(12px);
+  /* Lighten the navigation bar to complement the pale page background. */
+  background: linear-gradient(to bottom, rgba(249, 245, 241, 0.96), rgba(245, 237, 231, 0.86));
+  border-bottom: 1px solid rgba(209, 213, 219, 0.4);
 }
 
 .nav {
@@ -78,24 +91,16 @@ header {
 }
 
 .logo-mark {
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  background: conic-gradient(from 180deg, #22c55e, #3b82f6, #22c55e);
-  padding: 2px;
+  display: none;
 }
 
-.logo-inner {
-  width: 100%;
-  height: 100%;
-  border-radius: 999px;
-  background: radial-gradient(circle at 30% 20%, #22c55e, #0b1120 60%, #020617 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #e5e7eb;
+/* Custom logo image used throughout the navigation. */
+.logo-img {
+  width: 36px;
+  height: 36px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.55rem;
 }
 
 .logo-text-title {
@@ -117,14 +122,15 @@ header {
 }
 
 .nav-links a {
-  color: var(--muted);
+  /* Navigation links use the main text colour on the light nav bar. */
+  color: var(--text);
   padding-bottom: 2px;
   border-bottom: 1px solid transparent;
   transition: color var(--transition-fast), border-color var(--transition-fast);
 }
 
 .nav-links a:hover {
-  color: var(--text);
+  color: var(--accent);
   border-color: var(--accent);
 }
 
@@ -195,6 +201,9 @@ header {
   gap: 2.5rem;
   padding: 2.75rem 0 2.5rem;
   align-items: center;
+
+  /* Lighten the hero section to echo the beige header image from the reference site. */
+  background: var(--bg-alt);
 }
 
 .hero-kicker {
@@ -203,9 +212,10 @@ header {
   gap: 0.45rem;
   font-size: 0.83rem;
   color: var(--accent-strong);
-  background: rgba(22, 163, 74, 0.12);
+  background: rgba(34, 197, 94, 0.12);
   border-radius: 999px;
   padding: 0.22rem 0.7rem 0.22rem 0.28rem;
+  /* Use the primary accent colour for the outline around the kicker pill. */
   border: 1px solid rgba(34, 197, 94, 0.35);
   margin-bottom: 0.9rem;
 }
@@ -401,7 +411,8 @@ section {
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   padding: 1.1rem 1rem 1.15rem;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  /* Use the soft shadow defined in variables instead of a heavy dark shadow. */
+  box-shadow: var(--shadow-soft);
 }
 
 .card-kicker {
