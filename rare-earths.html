@@ -4,71 +4,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Geotechnic Solutions: Rare Earth Element exploration services for the green transition."/>
+  <meta name="description" content="Explore the critical rare earth elements essential for the green transition.">
   <title>Rare Earth Elements | Geotechnic Solutions</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      background: #fefefe;
+      color: #111;
+    }
+    .header, .footer {
+      padding: 1rem 2rem;
+      background: #009515;
+      color: white;
+    }
+    .content {
+      padding: 2rem;
+      max-width: 960px;
+      margin: auto;
+    }
+    .element-card {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      background: #f2f2f2;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .element-image {
+      flex: 1 1 200px;
+      min-width: 200px;
+      max-width: 300px;
+      background-color: #e0e0e0;
+      text-align: center;
+    }
+    .element-image img {
+      width: 100%;
+      height: auto;
+    }
+    .element-info {
+      flex: 2 1 400px;
+      padding: 1rem 1.5rem;
+    }
+    .element-info h3 {
+      margin-top: 0;
+      color: #009515;
+    }
+    .info-row {
+      margin-bottom: 0.75rem;
+    }
+    .info-row strong {
+      display: inline-block;
+      width: 140px;
+      font-weight: 600;
+    }
+    @media (max-width: 768px) {
+      .element-card {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <nav>
-      <a href="index.html"><img src="logo.svg" alt="Geotechnic Solutions logo" height="40"/></a>
-      <ul>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="process.html">Process</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
+  <header class="header">
+    <h1>Rare Earth Elements for the Green Transition</h1>
+    <p>Overview of key REEs, their uses, geological occurrence, and economic parameters</p>
   </header>
 
-  <main>
-    <section class="hero">
-      <h1>Rare Earth Elements for the Green Transition</h1>
-      <p>AI + GIS-supported exploration for the minerals powering clean energy, digital infrastructure, and industrial decarbonisation.</p>
+  <main class="content">
+    <section class="element-card">
+      <div class="element-image">
+        <img src="images/neodymium-crystal.jpg" alt="Neodymium crystal structure">
+      </div>
+      <div class="element-info">
+        <h3>Neodymium (Nd)</h3>
+        <div class="info-row"><strong>Applications:</strong> Permanent magnets in EVs, turbines, robotics, and headphones</div>
+        <div class="info-row"><strong>Geological Occurrence:</strong> Monazite, bastnäsite, and lateritic clays in carbonatite-hosted deposits</div>
+        <div class="info-row"><strong>Economic Parameters:</strong> 100–300 kg/ha | ~$80–$150/kg (2025 est.)</div>
+      </div>
     </section>
 
-    <section class="section">
-      <h2>What Are Rare Earth Elements?</h2>
-      <p>Rare Earth Elements (REEs) are a group of 17 chemical elements essential to modern technologies: 15 lanthanides plus scandium and yttrium. They are critical for the development of clean energy technologies, electric vehicles, wind turbines, permanent magnets, and advanced electronics.</p>
+    <section class="element-card">
+      <div class="element-image">
+        <img src="images/dysprosium-crystal.jpg" alt="Dysprosium crystal structure">
+      </div>
+      <div class="element-info">
+        <h3>Dysprosium (Dy)</h3>
+        <div class="info-row"><strong>Applications:</strong> High-temp magnets in EV motors, nuclear control rods</div>
+        <div class="info-row"><strong>Geological Occurrence:</strong> Ion-adsorption clays, bastnäsite, and xenotime</div>
+        <div class="info-row"><strong>Economic Parameters:</strong> 20–60 kg/ha | ~$280–$450/kg</div>
+      </div>
     </section>
 
-    <section class="section">
-      <h2>High-Demand REEs (2025–2035)</h2>
-      <ul class="element-cards">
-        <li><strong>Neodymium (Nd)</strong><br> Used in permanent magnets for EVs and turbines. <a href="#">More</a></li>
-        <li><strong>Praseodymium (Pr)</strong><br> Magnet alloys and aerospace. <a href="#">More</a></li>
-        <li><strong>Dysprosium (Dy)</strong><br> High-temp magnets for EV motors. <a href="#">More</a></li>
-        <li><strong>Terbium (Tb)</strong><br> Enhances magnetic performance. <a href="#">More</a></li>
-        <li><strong>Samarium (Sm)</strong><br> Lasers, radar, magnets. <a href="#">More</a></li>
-        <li><strong>Yttrium (Y)</strong><br> LEDs, superconductors, ceramics. <a href="#">More</a></li>
-        <li><strong>Europium (Eu)</strong><br> Phosphors, quantum devices. <a href="#">More</a></li>
-        <li><strong>Cerium (Ce)</strong><br> Catalysts and polishing. <a href="#">More</a></li>
-        <li><strong>Lanthanum (La)</strong><br> Batteries and optical glass. <a href="#">More</a></li>
-      </ul>
-    </section>
+    <!-- More elements would follow the same card structure -->
 
-    <section class="section">
-      <h2>Our REE Services</h2>
-      <ul>
-        <li><strong>REE Prospect Scan:</strong> Remote + AI targeting, prospectivity scoring, ESG overlays.</li>
-        <li><strong>Country/Region Supply Briefs:</strong> Strategic outlook + permitting insights.</li>
-        <li><strong>Investor Due Diligence:</strong> Second opinion on geology, resources, and risk.</li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <h2>AI + GIS-Enhanced Workflow</h2>
-      <p>We integrate remote sensing, geodata layers, and structured learning to deliver feasibility scans faster. Reports are standardised but tailored with human insight at key decision points.</p>
-    </section>
-
-    <section class="section">
-      <h2>Request a Demo</h2>
-      <p>See how our desktop scans and REE intelligence reports can support your next step. <a href="contact.html">Contact us →</a></p>
-    </section>
   </main>
 
-  <footer class="site-footer">
-    <p>&copy; 2025 Geotechnic Solutions. All rights reserved.</p>
+  <footer class="footer">
+    &copy; 2025 Geotechnic Solutions. All rights reserved.
   </footer>
 </body>
 </html>
