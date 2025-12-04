@@ -1,43 +1,703 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Geotechnic Solutions â€“ Geoscience for the Green Transition</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Feasibilityâ€‘first geoscience consultancy for geothermal and critical minerals.">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Geotechnic Solutions – Geoscience for the Green Transition</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Geotechnic Solutions offers geoscience consultancy, geothermal feasibility studies, and AI+GIS-supported energy and critical minerals assessments for the green transition."
+  />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #070b1f;
+      --card: #0c1024;
+      --accent: #3b82f6;
+      --accent-soft: rgba(59, 130, 246, 0.15);
+      --accent-strong: #22c55e;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --radius-lg: 1.25rem;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.5);
+      --transition-fast: 180ms ease-out;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0b1120 0, #020617 50%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 0 1.25rem 4rem;
+    }
+
+    .shell {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.96), rgba(2, 6, 23, 0.86));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1.25rem;
+      gap: 1rem;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: conic-gradient(from 180deg, #22c55e, #3b82f6, #22c55e);
+      padding: 2px;
+    }
+
+    .logo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #22c55e, #0b1120 60%, #020617 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #e5e7eb;
+    }
+
+    .logo-text-title {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .logo-text-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+      transition: color var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      border-color: var(--accent);
+    }
+
+    .nav-cta {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      border-radius: 999px;
+      padding: 0.55rem 1.2rem;
+      font-size: 0.85rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text);
+      transition: background var(--transition-fast), border-color var(--transition-fast),
+        transform var(--transition-fast), box-shadow var(--transition-fast);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #22c55e);
+      border-color: rgba(15, 23, 42, 0.7);
+      box-shadow: 0 15px 30px rgba(37, 99, 235, 0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 45px rgba(37, 99, 235, 0.6);
+    }
+
+    .btn-ghost {
+      border-color: rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.95);
+      border-color: rgba(148, 163, 184, 0.8);
+    }
+
+    .btn-icon {
+      font-size: 1rem;
+    }
+
+    .nav-toggle {
+      display: none;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 0.25rem 0.6rem;
+      background: rgba(15, 23, 42, 0.85);
+      color: #e5e7eb;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      padding: 2.75rem 0 2.5rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.83rem;
+      color: var(--accent-strong);
+      background: rgba(22, 163, 74, 0.12);
+      border-radius: 999px;
+      padding: 0.22rem 0.7rem 0.22rem 0.28rem;
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-kicker-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent-strong);
+      box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.25);
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 3vw, 2.7rem);
+      line-height: 1.1;
+      margin: 0 0 0.75rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, var(--accent-strong), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--muted);
+      max-width: 36rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.1rem;
+      align-items: center;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-pill {
+      font-size: 0.78rem;
+      padding: 0.2rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--muted);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .hero-meta-item {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-meta-item strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .hero-right {
+      position: relative;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top, #1f2937 0, #020617 60%, #000 100%);
+      border-radius: 1.6rem;
+      padding: 1.5rem 1.4rem;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .hero-card-tag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .hero-card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-card-sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-card-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: var(--muted);
+    }
+
+    .hero-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      border-top: 1px dashed rgba(148, 163, 184, 0.5);
+      padding-top: 0.8rem;
+      margin-top: 0.3rem;
+    }
+
+    .spark {
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.15), transparent 70%);
+      filter: blur(3px);
+      pointer-events: none;
+    }
+
+    .spark-1 {
+      top: -25px;
+      right: -30px;
+    }
+
+    .spark-2 {
+      bottom: -40px;
+      left: -30px;
+      background: radial-gradient(circle, rgba(22, 163, 74, 0.16), transparent 70%);
+    }
+
+    /* Sections */
+    section {
+      margin: 2.5rem 0;
+    }
+
+    .section-header {
+      margin-bottom: 1.4rem;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .section-title {
+      font-size: 1.45rem;
+      margin: 0 0 0.4rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 40rem;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.3rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 1.1rem 1rem 1.15rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .card-kicker {
+      font-size: 0.75rem;
+      color: var(--accent-strong);
+      margin-bottom: 0.15rem;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      margin: 0 0 0.3rem;
+    }
+
+    .card-body {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .card-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .card-list li {
+      margin-bottom: 0.25rem;
+      padding-left: 0.9rem;
+      position: relative;
+    }
+
+    .card-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.6rem;
+    }
+
+    .pill {
+      font-size: 0.76rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .step {
+      position: relative;
+      padding-left: 1.9rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .step-num {
+      position: absolute;
+      left: 0;
+      top: 0.1rem;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--accent);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .step strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+      gap: 1.5rem;
+    }
+
+    .about-block {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .about-tag {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.78rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      margin-bottom: 0.45rem;
+    }
+
+    .about-highlight {
+      font-size: 0.88rem;
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 0.9rem;
+      padding: 0.85rem 0.9rem;
+      border: 1px dashed rgba(148, 163, 184, 0.6);
+      margin-top: 0.5rem;
+      color: var(--muted);
+    }
+
+    .contact-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .contact-info {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .contact-info a {
+      color: var(--accent);
+    }
+
+    .contact-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.6rem;
+    }
+
+    .form-wrap {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text);
+      font-size: 0.85rem;
+      padding: 0.45rem 0.6rem;
+      outline: none;
+      resize: vertical;
+      min-height: 2.15rem;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.4);
+    }
+
+    textarea {
+      min-height: 110px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(30, 41, 59, 0.9);
+      padding: 1.3rem 1.25rem 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: #020617;
+      margin-top: 3rem;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Responsive */
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 2rem;
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .about-grid,
+      .contact-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      header {
+        position: static;
+      }
+
+      .hero {
+        padding-top: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
     <div class="nav">
       <div class="logo-wrap">
-      <img src="logo.svg" alt="Geotechnic Solutions logo" class="logo-img">
+        <div class="logo-mark">
+          <div class="logo-inner">G</div>
+        </div>
         <div>
           <div class="logo-text-title">Geotechnic Solutions</div>
           <div class="logo-text-sub">Geoscience for a greener future</div>
         </div>
       </div>
- <nav class="nav-links">
-  <a href="index.html">Home</a>
-  <div class="nav-item dropdown">
-    <a href="#" class="nav-link">Services ▾</a>
-    <ul class="dropdown-menu">
-      <li><a href="rare-earths.html">Rare Earths</a></li>
-      <li><a href="geothermal.html">Geothermal Electricity</a></li>
-    </ul>
-  </div>
-  <a href="process.html">Process</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-</nav>
+
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#workflow">How it works</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
       <div class="nav-cta">
-        <a class="btn btn-ghost" href="contact.html">Request report</a>
-        <a class="btn btn-primary" href="https://geotechnic-app-923608380346.us-central1.run.app" target="_blank" rel="noopener noreferrer">
+        <a class="btn btn-ghost" href="#contact">Request report</a>
+        <a
+          class="btn btn-primary"
+          href="https://geotechnic-app-923608380346.us-central1.run.app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Quick Green Energy Scan
-          <span class="btn-icon">â†—</span>
+          <span class="btn-icon">↗</span>
         </a>
       </div>
+
       <button class="nav-toggle">Menu</button>
     </div>
   </header>
@@ -49,187 +709,312 @@
         <div>
           <div class="hero-kicker">
             <div class="hero-kicker-dot"></div>
-            Geoâ€‘intelligence for the green transition
+            Geo-intelligence for the green transition
           </div>
           <h1 class="hero-title">
-            Feasibilityâ€‘first
+            Feasibility-first
             <span>geoscience consultancy</span>
             for geothermal & critical minerals.
           </h1>
           <p class="hero-subtitle">
-            Geotechnic Solutions helps developers, authorities and investors quickly understand where the subsurface
-            supports viable projects â€“ from geothermal heat to critical raw materials â€“ using expert geoscience,
-            highâ€‘resolution GIS and AIâ€‘assisted analysis.
+            Geotechnic Solutions helps developers, authorities, and investors quickly understand where the subsurface
+            supports viable projects – from geothermal heat to critical raw materials – using expert geoscience,
+            high-resolution GIS, and AI-assisted analysis.
           </p>
+
           <div class="hero-grid">
-            <a class="btn btn-primary" href="contact.html">
+            <a class="btn btn-primary" href="#contact">
               Request a feasibility call
-              <span class="btn-icon">â†’</span>
+              <span class="btn-icon">→</span>
             </a>
-            <a class="btn btn-ghost" href="https://geotechnic-app-923608380346.us-central1.run.app" target="_blank" rel="noopener noreferrer">
+            <a
+              class="btn btn-ghost"
+              href="https://geotechnic-app-923608380346.us-central1.run.app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Try the free Green Energy Scan
             </a>
           </div>
+
           <div class="hero-meta">
             <div class="hero-meta-item">
               <strong>Subsurface focus:</strong> geothermal, geology, geophysics, critical minerals
             </div>
             <div class="hero-meta-item">
-              <strong>Tooling:</strong> GIS, satellite data, open data, AIâ€‘generated maps & reports
+              <strong>Tooling:</strong> GIS, satellite data, open data, AI-generated maps & reports
             </div>
           </div>
         </div>
+
         <div class="hero-right">
           <div class="hero-card">
             <div class="hero-card-tag">
               <span class="hero-card-tag-dot"></span>
-              Snapshot
+              Feasibility snapshot
             </div>
             <div class="hero-card-title">Can this area host a viable green energy project?</div>
             <div class="hero-card-sub">
-              A standardised desktop study that screens your area for geothermal, wind, solar or critical minerals
-              potential and outlines next steps.
+              A standardised desktop study that screens your area for geothermal, wind, solar, or critical minerals
+              potential, and outlines next steps.
             </div>
+
             <div class="hero-card-badges">
-              <span class="badge">Polygonâ€‘based scan</span>
+              <span class="badge">Polygon-based scan</span>
               <span class="badge">Subsurface + surface constraints</span>
               <span class="badge">Risk & opportunity summary</span>
             </div>
+
             <div class="hero-card-footer">
-              <span>Designed for earlyâ€‘stage decisions</span>
-              <span>â†’ From screening to preâ€‘feasibility</span>
+              <span>Designed for early-stage decisions</span>
+              <span>→ From screening to pre-feasibility</span>
             </div>
+
             <div class="spark spark-1"></div>
             <div class="spark spark-2"></div>
           </div>
         </div>
       </section>
 
-      <!-- Intro summary -->
-      <section id="summary">
+      <!-- Services -->
+      <section id="services">
         <div class="section-header">
-          <div class="section-kicker">Overview</div>
-          <h2 class="section-title">Accelerating the energy transition</h2>
+          <div class="section-kicker">Services</div>
+          <h2 class="section-title">What Geotechnic Solutions can do for you</h2>
           <p class="section-subtitle">
-            We bridge the gap between geological uncertainty and investment decisions. Through our desktop screening
-            and preâ€‘feasibility services, we help you understand subsurface potential before committing to
-            expensive fieldwork.
+            We focus on the early project stages where geology, uncertainty and investment pressure meet. Our role:
+            turn scattered data into clear, decision-ready subsurface intelligence.
           </p>
         </div>
+
         <div class="cards-grid">
           <article class="card">
             <div class="card-kicker">Geothermal</div>
-            <h3 class="card-title">Screening & preâ€‘feasibility</h3>
+            <h3 class="card-title">Geothermal screening & pre-feasibility</h3>
             <p class="card-body">
-              Is your site suitable for geothermal heat? We combine geological context, temperatureâ€‘depth models
-              and simple CAPEX/OPEX ranges to give you a go/noâ€‘go decision fast.
+              Desktop assessments that show whether your region, industrial site, or greenhouse cluster could host a
+              geothermal system, and what it would roughly look like.
             </p>
-            <a class="btn btn-ghost" href="services.html#geothermal">Learn more â†’</a>
+            <ul class="card-list">
+              <li>Regional geological & geothermal context</li>
+              <li>Temperature-at-depth and reservoir concepts</li>
+              <li>Simple CAPEX / OPEX and LCOH ranges</li>
+              <li>Risk, uncertainty & recommended next steps</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill">Municipalities & regions</span>
+              <span class="pill">Industrial clusters</span>
+              <span class="pill">Greenhouse projects</span>
+            </div>
           </article>
+
           <article class="card">
             <div class="card-kicker">Critical minerals</div>
-            <h3 class="card-title">Strategic raw materials</h3>
+            <h3 class="card-title">Critical & strategic raw materials support</h3>
             <p class="card-body">
-              Need to understand the potential for lithium, rare earths or other strategic minerals? Our desktop
-              prospectivity scans and supply briefs highlight opportunities and risks.
+              Early-stage geoscience intelligence for critical minerals and metals needed in the energy transition,
+              from prospectivity scans to high-level risk reviews.
             </p>
-            <a class="btn btn-ghost" href="services.html#minerals">Learn more â†’</a>
+            <ul class="card-list">
+              <li>Desktop prospectivity maps & target ranking</li>
+              <li>Country / region critical minerals briefs</li>
+              <li>Red-flag reviews for investors and partners</li>
+              <li>ESG & permitting context at a high level</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill">Investors & OEMs</span>
+              <span class="pill">Exploration strategy</span>
+              <span class="pill">ESG-aware decision-making</span>
+            </div>
           </article>
+
           <article class="card">
             <div class="card-kicker">AI + GIS</div>
-            <h3 class="card-title">Deskâ€‘ready intelligence</h3>
+            <h3 class="card-title">AI-assisted GIS & feasibility reports</h3>
             <p class="card-body">
-              We automate map stacking and reporting using AI and GIS to deliver consistent, highâ€‘quality outputs
-              without losing expert judgement.
+              From interactive maps to narrative reports, we combine GIS, satellite data, and AI to standardise
+              high-quality feasibility outputs without losing expert judgement.
             </p>
-            <a class="btn btn-ghost" href="services.html#ai">Learn more â†’</a>
+            <ul class="card-list">
+              <li>Custom map stacks for investors & boards</li>
+              <li>Standardised screening & pre-feasibility templates</li>
+              <li>Scenario comparison with clear trade-offs</li>
+              <li>Behind-the-scenes automation to move faster</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill">GIS & satellite data</span>
+              <span class="pill">Interactive web maps</span>
+              <span class="pill">LLM-assisted reporting</span>
+            </div>
           </article>
         </div>
       </section>
 
-      <!-- Process summary -->
-      <section id="process-summary">
+      <!-- How it works -->
+      <section id="workflow">
         <div class="section-header">
           <div class="section-kicker">Process</div>
-          <h2 class="section-title">From polygon to decision</h2>
+          <h2 class="section-title">From polygon to decision in a few clear steps</h2>
           <p class="section-subtitle">
-            We keep it lean: share your area, we analyse it with AI+GIS and you get a decisionâ€‘ready report.
+            Whether you’re a municipality, a developer, or an investor, we keep the process lean: a focused desktop
+            assessment first, then only the deeper studies that are actually needed.
           </p>
         </div>
+
         <div class="steps">
           <div class="step">
             <div class="step-num">1</div>
-            <strong>Define your area & ambition</strong>
-            Share a polygon, site boundary or region and tell us what youâ€™re considering: geothermal heat,
-            wind/solar or strategic minerals â€“ including timeline, budget and risk appetite.
+            <strong>Share your area & ambition</strong>
+            Define the area of interest (polygon, site boundary, or region) and what you’re considering: geothermal
+            heat, wind/solar, or critical minerals–plus constraints like timeline, budget, and risk appetite.
           </div>
           <div class="step">
             <div class="step-num">2</div>
-            <strong>AI+GIS desktop analysis</strong>
-            We compile existing subsurface and surface data, run standardised screening workflows and use AI to
-            support expert interpretation and reporting.
+            <strong>AI+GIS-supported desktop analysis</strong>
+            We pull together available subsurface and surface data, run standardised screening workflows, and use AI to
+            support–not replace–expert interpretation and reporting.
           </div>
           <div class="step">
             <div class="step-num">3</div>
-            <strong>Decisionâ€‘ready outputs</strong>
-            Receive a concise feasibility report with maps, key metrics and recommended next steps â€” ready to share
-            with stakeholders.
+            <strong>Decision-ready outputs</strong>
+            You receive a concise feasibility report with maps, key metrics, and recommended next steps, ready to share
+            with colleagues, boards, or investors.
           </div>
-        </div>
-        <div style="margin-top:1.5rem; text-align:center;">
-          <a class="btn btn-primary" href="process.html">See the full process â†’</a>
         </div>
       </section>
 
-      <!-- About summary -->
-      <section id="about-summary">
+      <!-- About -->
+      <section id="about">
         <div class="section-header">
           <div class="section-kicker">About</div>
           <h2 class="section-title">Geoscience roots, transition mindset</h2>
           <p class="section-subtitle">
-            Founded by a geoscientist passionate about the energy transition, Geotechnic Solutions blends classical
-            geology and geophysics with modern GIS and AI to shorten the path from raw data to realâ€‘world projects.
+            Geotechnic Solutions was founded by a geoscientist with a passion for the energy transition, bringing
+            together subsurface expertise, GIS, and AI to bridge the gap between raw data and real-world projects.
           </p>
         </div>
+
         <div class="about-grid">
           <div class="about-block">
             <div class="about-tag">Why this exists</div>
             <p>
-              The green transition is held back by uncertainty: geothermal potential that isnâ€™t mapped and strategic
-              minerals that are poorly understood. Decisions take years instead of months.
+              The green transition is being slowed down by uncertainty in the subsurface: geothermal potential that
+              isn’t mapped, critical minerals that are poorly understood, and decisions that take years instead of
+              months.
             </p>
             <p>
-              Geotechnic Solutions exists to shorten that path. We help you understand where it makes sense to
-              invest time, money and attention â€“ and where it doesnâ€™t.
+              Geotechnic Solutions exists to shorten that path. By combining classical geology and geophysics with
+              modern GIS and AI tooling, we help you quickly understand where it makes sense to invest time, money, and
+              attention – and where it doesn’t.
             </p>
           </div>
+
           <div class="about-block">
             <div class="about-highlight">
               <strong>Based in the Netherlands, working globally.</strong><br />
-              Located in the Tech Startâ€‘Up Hub Haarlem and registered with the Dutch Chamber of Commerce (KvK), we
-              collaborate with a network of specialists and use remoteâ€‘first workflows to support projects across
-              Europe and beyond.
+              Geotechnic Solutions is located in the Tech Start-Up Hub in Haarlem and registered with the Dutch Chamber
+              of Commerce (KvK). We collaborate with a network of specialists and use remote-first workflows to support
+              projects across Europe and beyond.
             </div>
           </div>
         </div>
-        <div style="margin-top:1.5rem; text-align:center;">
-          <a class="btn btn-primary" href="about.html">Learn more about us â†’</a>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <div class="section-header">
+          <div class="section-kicker">Contact</div>
+          <h2 class="section-title">Let’s explore your project</h2>
+          <p class="section-subtitle">
+            Share a few details about your area and what you’re considering. We’ll get back to you with a short response
+            and, if it makes sense, a proposal for a structured screening or pre-feasibility study.
+          </p>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-info">
+            <p>
+              Email:
+              <a href="mailto:info@geotechnic.solutions">info@geotechnic.solutions</a>
+            </p>
+            <p>
+              Location: Tech Start-Up Hub Haarlem, The Netherlands<br />
+              Chamber of Commerce (KvK): 81374984
+            </p>
+            <p>
+              Socials (LinkedIn, Instagram and more) are available via our main domain:
+              <a href="https://www.geotechnic.solutions" target="_blank" rel="noopener noreferrer">
+                geotechnic.solutions
+              </a>
+            </p>
+            <p class="contact-meta">
+              We’re comfortable working as a direct partner or as a specialist subcontractor within larger
+              multidisciplinary teams.
+            </p>
+          </div>
+
+          <div class="form-wrap">
+            <!-- This is a static example form. For production, connect it to Formspree, Netlify Forms, or an API. -->
+            <form>
+              <div class="form-grid">
+                <div>
+                  <label for="name">Name</label>
+                  <input id="name" name="name" type="text" placeholder="Your name" />
+                </div>
+                <div>
+                  <label for="org">Organisation</label>
+                  <input id="org" name="org" type="text" placeholder="Company / institution" />
+                </div>
+                <div>
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" placeholder="you@example.com" />
+                </div>
+                <div>
+                  <label for="topic">What do you need?</label>
+                  <select id="topic" name="topic">
+                    <option value="">Select an option</option>
+                    <option value="geothermal">Geothermal screening / pre-feasibility</option>
+                    <option value="critical-minerals">Critical minerals / raw materials support</option>
+                    <option value="gis-ai">GIS / AI mapping & reports</option>
+                    <option value="other">Other subsurface / transition project</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="message">Project / area of interest</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Describe your area, country/region, and what you’d like to explore..."
+                  ></textarea>
+                </div>
+                <div>
+                  <button class="btn btn-primary" type="submit">
+                    Send enquiry
+                    <span class="btn-icon">→</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </section>
     </div>
   </main>
+
   <footer>
     <div class="footer-inner">
-      <div>Â© <span id="year"></span> Geotechnic Solutions. All rights reserved.</div>
+      <div>© <span id="year"></span> Geotechnic Solutions. All rights reserved.</div>
       <div class="footer-links">
         <a href="#top">Back to top</a>
         <a href="https://www.geotechnic.solutions" target="_blank" rel="noopener noreferrer">Legacy site</a>
-        <a href="contact.html">Contact</a>
+        <a href="mailto:info@geotechnic.solutions">Contact</a>
       </div>
     </div>
   </footer>
+
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Update year automatically
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
