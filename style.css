@@ -830,3 +830,37 @@ footer {
 .nav-item.dropdown:hover .dropdown-menu {
   display: block;
 }
+/* Dropdown menu for Services */
+.nav-item.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-item .dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #111;
+  border: 1px solid #333;
+  z-index: 1000;
+  min-width: 220px;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+}
+
+.nav-item .dropdown-menu li {
+  padding: 0.3rem 1rem;
+}
+
+.nav-item .dropdown-menu li:hover {
+  background-color: #222;
+}
+
+.nav-item .dropdown-menu li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
